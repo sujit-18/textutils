@@ -7,6 +7,8 @@ export default function Textform() {
         let newtext = text.toLocaleUpperCase();
         setText(newtext);
     }
+
+    // for uppercase and lowercase we can also write like this
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
