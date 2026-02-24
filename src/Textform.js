@@ -1,67 +1,87 @@
-        import React from "react";
+import React from "react";
 
-        export default function Textform() {
+export default function Textform() {
 
-            const [text , setText] = React.useState("");
-            const handleuppercase = () => {
-                let newtext = text.toLocaleUpperCase();
-                setText(newtext);
-            }
+  const [text, setText] = React.useState("");
 
-            // for uppercase and lowercase we can also write like this
-            const handleOnChange = (event) => {
-                setText(event.target.value);
-            }
-            const handlelowercase = () => {
-                let newtext = text.toLocaleLowerCase();
-                setText(newtext);
-            }
+  const handleuppercase = () => {
+    setText(text.toUpperCase());
+  };
 
-          return (
-          <div className="container my-5">
+  const handlelowercase = () => {
+    setText(text.toLowerCase());
+  };
 
-            {/* Heading Center */}
-            <h2 className="text-center mb-4">Enter your text here</h2>
+  const handleOnChange = (event) => {
+    setText(event.target.value);
+  };
 
-            {/* Textarea Center + Width Control */}
-            <div className="d-flex justify-content-center">
-              <div style={{ width: "70%" }}>
-                <textarea
-                  className="form-control"
-                  value={text}
-                  onChange={handleOnChange}
-                  rows="8"
-                  placeholder="Enter your text here..."
-                ></textarea>
+  const handleClear = () => {
+    setText("");
+  };
 
-                {/* Buttons Left Side (Start) */}
-                <div className="mt-3">
-                  <button className="btn btn-primary me-2" onClick={handleuppercase}>
-                    Convert to Uppercase
-                  </button>
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    alert("Text Copied!");
+  };
 
-                  <button
-                    className="btn btn-success me-2"
-                    onClick={() => setText(text.toLocaleLowerCase())}
-                  >
-                    Convert to Lowercase
-                  </button>
+  const wordCount =
+    text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
 
-                  <button
-                    className="btn btn-secondary"
-                    onClick={() => setText("")}
-                  >
-                    Clear Text
-                  </button>
-                  <button className="btn btn-info ms-2" onClick={()=> navigator.clipboard.writeText(text)}>
-                    Copy Text
-                  </button>
-                </div>
-              </div>
-            
-            </div>
-        <h3 className="ms-4" style={{ marginTop: "20px" }}>Count Words And Characters:
-           {text.split(" ").filter(t => t !== "").length} words and {text.length} characters</h3>
+  return (
+    <div className="container my-5">
+
+      <h2 className="text-center mb-4">Enter your text here</h2>
+
+      <div className="d-flex justify-content-center">
+        <div style={{ width: "70%" }}>
+          
+          <textarea
+            className="form-control"
+            value={text}
+            onChange={handleOnChange}
+            rows="8"
+            placeholder="Enter your text here..."
+          ></textarea>
+
+          <div className="mt-3">
+
+            <button
+              className="btn btn-primary me-2"
+              onClick={handleuppercase}
+            >
+              Convert to Uppercase
+            </button>
+
+            <button
+              className="btn btn-success me-2"
+              onClick={handlelowercase}
+            >
+              Convert to Lowercase
+            </button>
+
+            <button
+              className="btn btn-secondary me-2"
+              onClick={handleClear}
+            >
+              Clear Text
+            </button>
+
+            <button
+              className="btn btn-info"
+              onClick={handleCopy}
+            >
+              Copy Text
+            </button>
+
           </div>
-        );
-      }
+        </div>
+      </div>
+
+      <h4 className="ms-4 mt-4">
+        Count Words And Characters: {wordCount} words and {text.length} characters
+      </h4>
+
+    </div>
+  );
+}
