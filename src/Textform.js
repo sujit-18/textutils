@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 
 export default function Textform() {
 
@@ -59,7 +58,7 @@ export default function Textform() {
         <div className="mb-3 d-flex flex-wrap gap-2">
 
           <button
-            className="btn custom-btn"
+            className="btn btn-primary"
             onClick={handleUppercase}
             disabled={!text}
           >
@@ -67,7 +66,7 @@ export default function Textform() {
           </button>
 
           <button
-            className="btn custom-btn"
+            className="btn btn-success"
             onClick={handleLowercase}
             disabled={!text}
           >
@@ -75,7 +74,7 @@ export default function Textform() {
           </button>
 
           <button
-            className="btn custom-btn"
+            className="btn btn-warning"
             onClick={handleRemoveSpaces}
             disabled={!text}
           >
@@ -83,7 +82,7 @@ export default function Textform() {
           </button>
 
           <button
-            className="btn custom-btn"
+            className="btn btn-dark"
             onClick={handleReverse}
             disabled={!text}
           >
@@ -91,7 +90,7 @@ export default function Textform() {
           </button>
 
           <button
-            className="btn custom-btn"
+            className="btn btn-info"
             onClick={handleCopy}
             disabled={!text}
           >
@@ -99,7 +98,7 @@ export default function Textform() {
           </button>
 
           <button
-            className="btn custom-btn"
+            className="btn btn-danger"
             onClick={handleClear}
             disabled={!text}
           >
@@ -116,6 +115,7 @@ export default function Textform() {
 
         <hr />
 
+        {/* Summary Section */}
         <h4>Text Summary</h4>
         <p>
           <strong>{wordCount}</strong> words and{" "}
@@ -127,6 +127,7 @@ export default function Textform() {
 
         <hr />
 
+        {/* Preview Section */}
         <h4>Preview</h4>
         <div className="p-3 border rounded bg-light">
           {text.length > 0 ? text : "Nothing to preview..."}
